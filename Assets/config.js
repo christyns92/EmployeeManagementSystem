@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
     },
     console.log(`Connected to the roster_db database.`)
 );
-// fancy line of code that allows us to us asynch/await
+// fancy line of code that allows us to us async/await
 connection.query = util.promisify(connection.query);
 connection.connect();
 module.exports = connection;
