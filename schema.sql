@@ -1,10 +1,9 @@
-DROP DATABASE IF EXISTS corporation_db;
-CREATE DATABASE corporation_db;
-USE corporation_db;
+DROP DATABASE IF EXISTS employeeRoster_db;
+CREATE DATABASE employeeRoster_db;
+USE employeeRoster_db;
 CREATE TABLE department (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    
+    name VARCHAR(30) NOT NULL
 );
 CREATE TABLE roles (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

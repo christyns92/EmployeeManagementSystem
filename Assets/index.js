@@ -29,7 +29,7 @@ function initialPrompt() {
             name: "answer",
         }, ])
         .then((answer) => {
-            // console.log(answer.answer);
+            console.log(answer.answer);
             let question = answer.answer;
             switch (question) {
                 case "View All Employees":
@@ -51,14 +51,14 @@ function initialPrompt() {
                     addDepartment();
                     break;
                 case "Quit":
-                    return;
+                    break;
             }
         });
 }
 
 function viewAllEmployees() {
     db.query(
-        "SELECT employee.id employee_id, CONCAT(employee.first_name, ' ', employee.last_name)AS employees_name, roles.title, department.name AS department, roles.salary,CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name FROM employees employee LEFT JOIN employees manager ON employees.manager_id = manager.id INNER JOIN roles ON(roles.id = employee.role_id) INNER JOIN department ON(department.id = roles.department_id) ORDER BY employee.id;",
+        "SELECT employees.id employees_id, CONCAT(employees.first_name, ' ', employees.last_name)AS employees_name, roles.title, department.name AS department, roles.salary,CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name FROM employees employees LEFT JOIN employees manager ON employees.manager_id = manager.id INNER JOIN roles ON(roles.id = employees.role_id) INNER JOIN department ON(department.id = roles.department_id) ORDER BY employees.id;",
         (err, answer) => {
             if (err) {
                 console.log(err);
@@ -72,7 +72,7 @@ function viewAllEmployees() {
 
 function viewAllRoles() {
     db.query(
-        "SELECT id,title, department.name AS department, salary FROM roles role INNER JOIN department department ON roles.department_id = department.id;",
+        "SELECT roles.id,title, department.name AS department, salary FROM roles roles INNER JOIN department department ON roles.department_id = department.id;",
         (err, answer) => {
             if (err) {
                 console.log(err);
@@ -153,7 +153,7 @@ function addEmployee() {
             let employeeRole = answer.employee_Role;
             let employeeManager = answer.employee_manager;
             db.query(
-                `INSERT INTO employees (id,first_name, last_name, role_id, manager_id) VALUES (${employees_id},${employeeFirstName},${employeeLastName},${employeeRole}','${employeeManager}')`,
+                `INSERT INTO employees (id,first_name, last_name, roles_id, manager_id) VALUES (${employees_id},${employeeFirstName},${employeeLastName},${employeeRole}','${employeeManager}')`,
                 (err, results) => {
                     if (err) return err;
                     console.log(`\n Added ${employeeLastName} to the database!\n `);
