@@ -149,15 +149,15 @@ function addEmployee() {
         .then((answer) => {
             console.log(answer);
             let employees_id = answer.employees_id;
-            let employeefirstName = answer.employee_firstName;
-            let employeelastName = answer.employee_lastName;
+            let employeeFirstName = answer.employee_firstName;
+            let employeeLastName = answer.employee_lastName;
             let employeeRole = answer.employee_Role;
             let employeeManager = answer.employee_manager;
             db.query(
-                `INSERT INTO employees (id,first_name, last_name, role_id, manager_id) VALUES (${employees_id},${employeefirstName},${employeelastName},${employeeRole}','${employeeManager}')`,
+                `INSERT INTO employees (id,first_name, last_name, role_id, manager_id) VALUES (${employees_id},${employeeFirstName},${employeeLastName},${employeeRole}','${employeeManager}')`,
                 (err, results) => {
                     if (err) return err;
-                    console.log(`\n Added ${employeelastName} to the database!\n `);
+                    console.log(`\n Added ${employeeLastName} to the database!\n `);
                 }
             );
 
