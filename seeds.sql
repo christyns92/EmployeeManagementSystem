@@ -26,5 +26,5 @@ VALUES
     ("Jacob", "Guiro", 5, null),
     ("Harrison", "Kidd", 6, 5),
     ("Brandon", "Norsworthy", 7, null),
-    ("Mason", "Wallas", 8, 7);"
+    ("Mason", "Wallis", 8, 7);"
    

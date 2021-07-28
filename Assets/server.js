@@ -1,43 +1,25 @@
-const express = require('express');
-const inquirer = require('inquirer');
-const employee = require('./lib/Employee');
-const role = require('./lib/Role');
-const department = require('./lib/Department');
-
-const PORT = process.env.PORT || 8080;
+const express = require("express");
+const inquirer = require("inquirer");
+const mysql = require("mysql2");
+const index = require("./index")
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());;
 
 // Connect to database
 const db = mysql.createConnection({
-        host: 'localhost',
+        host: "localhost",
         // MySQL username,
-        user: 'root',
+        user: "root",
         // MySQL password
-        password: 'Password123',
-        database: 'roster_db'
+        password: "Password123",
+        database: "employeeRoster_db",
     },
-    console.log(`Connected to the roster_db database.`)
+    console.log(``)
 );
-
-// Query database
-db.query('SELECT * FROM employees', function(err, results) {
-    console.log(results);
-});
-// Query database
-db.query('SELECT * FROM departments', function(err, results) {
-    console.log(results);
-});
-
-// Query database
-db.query('SELECT * FROM roles', function(err, results) {
-    console.log(results);
-});
-
-
 // Default response for any other request (Not Found)
 app.use((req, res) => {
     res.status(404).end();
@@ -46,3 +28,4 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+module.exports = db;
