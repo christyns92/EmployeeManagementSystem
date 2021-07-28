@@ -55,7 +55,6 @@ function initialPrompt() {
             }
         });
 }
-initialPrompt();
 
 function viewAllEmployees() {
     db.query(
@@ -190,13 +189,7 @@ function addRoles() {
             let getRoleName = answer.getRoleName;
             let getRoleSalary = answer.getRoleSalary;
             let getRoleDepartment = answer.getRoleDepartment;
-            // let departmentId;
-            // for (let i = 0; i < depName.length; i++) {
-            //     if (getRoleDep == depName[i].name) {
-            //         departmentId = depName[i].id;
-            //     }
-            // }
-            //console.log(departmentId);
+
 
             db.query(
                 `

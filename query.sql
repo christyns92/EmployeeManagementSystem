@@ -1,16 +1,15 @@
   
--- it is first way to join 3 tables
 SELECT  first_name,last_name,title,name,salary,manager_id, role_id
-FROM department -- first table's name
-INNER JOIN  role -- second table's name
+FROM department 
+INNER JOIN  role 
 ON role.department_id = department.department_id
-INNER JOIN employee -- third table's name
+INNER JOIN employee 
 ON employee.role_id =role.role_id
--- it is secoind way to join 3 tables 
+
 SELECT id, first_name,last_name,title,department.name AS department,salary,manager_id, role_id
-FROM department,role,employee --all 
+FROM department,role,employee 
 WHERE department_id = department_id AND role_id =role_id;
--- it is third way to join 3 tables 
+
 SELECT  employees_id,firtName,lastName,title,salary,department.name AS department,manager_id, role_id
 FROM employees 
 INNER JOIN  roles 
